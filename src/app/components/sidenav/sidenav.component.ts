@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -8,15 +9,15 @@ import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  @Output() closeSideNav = new EventEmitter();
+  constructor( private router:Router) { }
 
-  constructor() { }
-
-  onToggleClose() {
-    this.closeSideNav.emit();
-}
+  opened = false;
 
   ngOnInit(): void {
+  }
+
+  goToPage(pageName:string):void{
+    this.router.navigate([`${pageName}`]);
   }
 
 }
